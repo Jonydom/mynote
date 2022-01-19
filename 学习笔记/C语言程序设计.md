@@ -64,7 +64,7 @@ int main() {
 
 #### 2. 分数相加减
 
-**题目**：![image-20220119134017274](C语言程序设计.assets/image-20220119134017274.png)
+**题目**：![image-20220119134017274](https://raw.githubusercontent.com/Jonydom/myPic/main/img/202201191544755.png)
 
 解析：用`sign`代表正负号
 
@@ -96,7 +96,7 @@ int main() {
 
 - **vector**
 
-  ![image-20220119135851234](C语言程序设计.assets/image-20220119135851234.png)
+  ![image-20220119135851234](https://raw.githubusercontent.com/Jonydom/myPic/main/img/202201191544539.png)
 
 - **map**和**unordered_map**
 
@@ -164,4 +164,3 @@ bool containsNearbyDuplicate(vector<int>& nums, int k) {
  
 ```
 
-![image-20220119153138663](C:\Users\10482\AppData\Roaming\Typora\typora-user-images\image-20220119153138663.png)
