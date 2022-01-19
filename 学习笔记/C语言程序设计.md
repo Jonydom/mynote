@@ -161,6 +161,7 @@ bool containsNearbyDuplicate(vector<int>& nums, int k) {
 **代码：**
 
 ```c
-
+ 
 ```
 
+![image-20220119153138663](C:\Users\10482\AppData\Roaming\Typora\typora-user-images\image-20220119153138663.png)
