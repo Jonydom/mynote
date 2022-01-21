@@ -11,6 +11,15 @@
 - `scanf()`有返回值且类型为int型，当发生错误时立刻返回EOF；
 - `scanf()`函数返回的值为：**正确**按指定格式输入变量的个数，未正确接受的变量不算在内。
 
+**类型标识符：**
+
+| 类型标识符 |    对应类型     |
+| :--------: | :-------------: |
+|     %d     |   十进制数字    |
+|     %s     |                 |
+|     %c     |      char       |
+|     %f     | float或者double |
+
 ### 类型转换
 
 - 隐式转换：
@@ -32,7 +41,15 @@
 
 ### 注意点❗❗❗
 
+- `scanf`的输入参数中，变量前面的`&`不要省略；
 
+  `scanf`中双引号内，除了“输入控制符”外什么都不要写；
+
+  “输出控制符”和“输出参数”无论在“**顺序上**”还是在“**个数上**”一定要一一对应；
+
+  “输入控制符”的类型和变量所定义的类型一定要一致；
+
+  使用 `scanf` 之前先用 `printf` 提示输入。
 
 ## 编程练习
 
@@ -98,7 +115,7 @@ int main() {
 
   ![image-20220119135851234](https://raw.githubusercontent.com/Jonydom/myPic/main/img/202201191544539.png)
 
-- **map**和**unordered_map**
+- **map**和**unordered_map**（映射）
 
   map和unordered_map都是c++中可以充当字典（key-value）来用的数据类型
 
@@ -123,6 +140,21 @@ int main() {
   ```
 
   [简述C++中map和unordered_map的用法](https://blog.csdn.net/jingyi130705008/article/details/82633778)
+
+- **set和unordered_set**（集合）
+
+- **string类**
+
+  **基本操作：**
+
+  ```
+  append()--在字符串的末尾添加字符
+  find()--在字符串中查找字符串
+  insert()--插入字符
+  length()--返回字符串的长度
+  replace()--替换字符串
+  substr()--返回某个子字符串
+  ```
 
   
 
@@ -161,6 +193,56 @@ bool containsNearbyDuplicate(vector<int>& nums, int k) {
 **代码：**
 
 ```c
- 
+int lengthOfLongestSubstring(string s) {
+	if(s.length() == 0) return 0;
+	unordered_set<char> dict;
+	int maxStr = 0;
+	int left = 0;
+	for (int i = 0; i < s.length(); i++) {
+		//如果出现重复字符，则将左指针left设置为set中重复字符的下一个
+		while (dict.find(s[i]) != dict.end()) {
+			//把set中最左边元素剔除出去
+			dict.erase(s[left]); 
+			left++;
+		}
+		//如果不是重复字符
+		maxStr = max(maxStr, i - left + 1);
+		dict.insert(s[i]);
+	}
+	return maxStr;
+    }
+};
+```
+
+[参考链接](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/solution/wu-zhong-fu-zi-fu-de-zui-chang-zi-chuan-by-leetc-2/)
+
+#### 3. 9 回文数
+
+**题目：**给你一个整数 `x` ，如果 `x` 是一个回文整数，返回 `true` ；否则，返回 `false` 。
+
+**思路：** 思路一：将数字转为字符串，然后检查字符串是否为回文串；
+
+​				思路二：将数字本身反转，因为反转后可能存在整数溢出的问题，所以只反转一半数字，然后两个数字作比较。
+
+**代码：**
+
+```c
+//思路一：
+//思路二：
+bool isPalindrome(int x) {
+	//考虑边界情况：
+    //负数，末尾为0且不是0的数字，都返回false
+    if (x < 0 || (x % 10 == 0) && x != 0 ) {
+        return false;
+    }
+    int reverseNumber = 0;
+    while (x > reverseNumber) {
+        reverseNumber = reverseNumber * 10 + (x % 10);
+        x /= 10;
+    }
+    //若是奇数，则reverseNumber大于x，返回（x == reverseNumber/10）
+    //若是偶数，则reverseNumber等于x，返回（x == reverseNumber）
+	return x == reverseNumber || x == reverseNumber/10;
+}
 ```
 
