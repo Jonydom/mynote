@@ -246,3 +246,46 @@ bool isPalindrome(int x) {
 }
 ```
 
+#### 4. 1332 删除回文子序列
+
+## 注意点❗❗❗
+
+### C++中内置函数
+
+- accumulate()
+
+  **所属文件：**#include<numeric>
+
+  **函数作用：**
+
+  1. 累加求和
+
+  ```c++
+  int sum = accumulate(vec.begin() , vec.end() , 42);
+  //accumulate带有三个形参：头两个形参指定要累加的元素范围，第三个形参则是累加的初值。
+  
+  //可以使用accumulate把string型的vector容器中的元素连接起来：
+  string sum = accumulate(v.begin() , v.end() , string(" "));
+  //这个函数调用的效果是：从空字符串开始，把vec里的每个元素连接成一个字符串。
+  ```
+
+  2. 自定义数据类型的处理
+
+### vector
+
+**初始化：**
+
+```c++
+vector<int> list1; 
+//默认初始化，vector为空， size为0，而且 capacity 也返回 0，意味着还没有分配内存空间
+vector<int> list2(list1);
+//list2初始化为list1
+vector<int> list3 = {1,2,3,4,5,6};
+vector<int> list4(7);
+//list4中将包含7个元素，每个元素进行缺省的值初始化，对于int，也就是被赋值为0，因此ilist4被初始化为包含7个0
+vector<int> list5(7,3);
+//指定值初始化，初始化为包含7个值为3的int
+vector<int> list6(list3.begin()+2, list3.end()-1);
+//初始化为两个迭代器指定范围中元素的拷贝
+```
+
